@@ -9,6 +9,11 @@ class RegexTest {
     }
 
     @Test
+    fun startWithConsonant(){
+        val result = transformWithConsonant("zig")
+        assertEquals("igzay", result )
+    }
+    @Test
     fun testStartWithConsonantAddVowels(){
         val result = startWithConsonant("ilpg")
         assertEquals(false, result )
@@ -19,4 +24,24 @@ class RegexTest {
         val result = pigLatin("string")
         assertEquals("string", result)
     }
+
+    @Test
+    fun startWithVowel(){
+        val wordTransform = transformWithVowel("eat")
+        assertEquals("eatay", wordTransform)
+    }
+
+    @Test
+    fun validateStartWithVowel(){
+        val isVowel = startWithVowel("eat")
+        assertEquals(true, isVowel)
+    }
+
+
+    @Test
+    fun pigLatinWithStartWithVowel(){
+        val wordUpdate = pigLatin("eat")
+        assertEquals("eatay", wordUpdate)
+    }
+
 }

@@ -9,8 +9,8 @@ fun main(args: Array<String>) {
 
 fun pigLatin(word: String): String{
 
-   if( startWithConsonant(word) ) return transformWithConsonant(word)
-
+    if( startWithConsonant(word) ) return transformWithConsonant(word)
+    if( startWithVowel(word) ) return transformWithVowel(word)
     return word
 }
 
@@ -19,9 +19,20 @@ fun startWithConsonant(word: String): Boolean{
       return STARTS_WITH_CONSONANT matches word
 }
 
+fun  startWithVowel(word: String): Boolean{
+    return STARTS_WITH_VOWEL matches word
+}
+
 fun transformWithConsonant(word: String): String{
     val newWord = word.removeRange(0,1) + word[0] + "ay"
     return newWord
+}
+
+fun transformWithVowel(word: String): String{
+    val lastWordToAdd = "ay"
+    // TODO: add midleLettet: 'n', 'y' o nothing
+    return  word + lastWordToAdd
+
 }
 
 fun startWithConsonantCluster(): String{
@@ -29,7 +40,7 @@ fun startWithConsonantCluster(): String{
 }
 
 
-val STARTS_WITH_VOWEL = """/^[aeiou]/i""".toRegex()
+val STARTS_WITH_VOWEL = """^[aeiou][a-z]*""".toRegex()
 val STARTS_WITH_CONSONANT = """^[b-df-hj-np-tv-z]""".toRegex()
 val STARTS_WITH_TWO_CONSONANTS = """/^[b-df-hj-np-tv-z]{2}/i""".toRegex()
 val ENDS_WITH_VOWEL = """/[aeiou]$/i""".toRegex()
