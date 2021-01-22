@@ -1,5 +1,6 @@
 import org.junit.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class RegexTest {
     @Test
@@ -44,4 +45,9 @@ class RegexTest {
         assertEquals("eatay", wordUpdate)
     }
 
+    @Test
+    fun matchStartWithTwoConsonants(){
+        val wordUpdate = startWithTwoConsonants("tppolll")
+        assertTrue(wordUpdate)
+    }
 }
