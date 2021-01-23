@@ -11,6 +11,11 @@ fun pigLatin(word: String): String{
 
     if( startWithConsonant(word) ) return transformWithConsonant(word)
     if( startWithVowel(word) ) return transformWithVowel(word)
+    if( startWithTwoConsonants(word) ) return transformWithVowel(word)
+    if( endsWithVowel(word) ) return transformWithVowel(word)
+    if( endsWithConsonants(word) ) return transformWithVowel(word)
+    if( endsWithY(word) ) return transformWithVowel(word)
+
     return word
 }
 
@@ -21,6 +26,19 @@ fun startWithConsonant(word: String): Boolean{
 
 fun  startWithVowel(word: String): Boolean{
     return STARTS_WITH_VOWEL matches word
+}
+fun  startWithTwoConsonants(word: String): Boolean{
+    return STARTS_WITH_TWO_CONSONANTS matches   word
+}
+
+fun  endsWithVowel(word: String): Boolean{
+    return ENDS_WITH_VOWEL matches word
+}
+fun  endsWithConsonants(word: String): Boolean{
+    return ENDS_WITH_CONSONANT matches word
+}
+fun  endsWithY(word: String): Boolean{
+    return ENDS_WITH_Y matches word
 }
 
 fun transformWithConsonant(word: String): String{
@@ -42,10 +60,10 @@ fun startWithConsonantCluster(): String{
 
 val STARTS_WITH_VOWEL = """^[aeiou][a-z]*""".toRegex()
 val STARTS_WITH_CONSONANT = """^[b-df-hj-np-tv-z]""".toRegex()
-val STARTS_WITH_TWO_CONSONANTS = """/^[b-df-hj-np-tv-z]{2}/i""".toRegex()
-val ENDS_WITH_VOWEL = """/[aeiou]$/i""".toRegex()
-val ENDS_WITH_CONSONANT = """/[b-df-hj-np-tv-z]$/i""".toRegex()
-val ENDS_WITH_Y = """/y$/i""".toRegex()
+val STARTS_WITH_TWO_CONSONANTS = """^[b-df-hj-np-tv-z]{2}[a-z]*""".toRegex()
+val ENDS_WITH_VOWEL = """[a-z]*[aeiou]$""".toRegex()
+val ENDS_WITH_CONSONANT = """[a-z]*[b-df-hj-np-tv-z]$""".toRegex()
+val ENDS_WITH_Y = """[a-z]*y$""".toRegex()
 val CAPTURE_LEADING_CONSONANTS = """/^([b-df-hj-np-tv-z]{1,})([a-zA-Z]*)/i""".toRegex()
 val PHRASE = """/\w+/ig""".toRegex()
 
